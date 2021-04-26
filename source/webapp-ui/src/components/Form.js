@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Box, Button, Card, CardContent, FormGroup, TextField, Typography } from '@material-ui/core';
 import {Form, Formik, useField} from 'formik';
 import { number, object, string } from 'yup';
 import Container from "@material-ui/core/Container";
 import * as axios from "axios";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import Alert from "@material-ui/lab/Alert";
+import {useDispatch, useSelector} from "react-redux";
+import {authFail} from "../redux/actions/auth";
 
 const MyTextField = ({placeholder, ...props}) => {
   const [field, meta] = useField(props);
@@ -18,15 +22,17 @@ const MyTextField = ({placeholder, ...props}) => {
   )
 }
 
-const submit = ({surname, name, lastName, phone, address, inn}, { setSubmitting, resetForm }) => {
-   axios.post(`http://127.0.0.1:8000/api/user/create/`, {surname, name, lastName, phone, address, inn})
-      .then(res => {
-        resetForm({})
-        console.log(res.data)
-        return res.data
-      })
-  setSubmitting(false)
-}
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '70%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+    marginBottom: '25px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  },
+}));
 
 const initialValues = {
   surname: '',
@@ -38,13 +44,43 @@ const initialValues = {
 };
 
 function UserForm (props) {
+  const [show, setShow] = useState(false)
+  const dispatch = useDispatch()
+  const classes = useStyles();
+  const submit = ({surname, name, lastName, phone, address, inn}, { setSubmitting, resetForm }) => {
+    axios.post(`http://127.0.0.1:8000/api/user/create/`, {surname, name, lastName, phone, address, inn})
+        .then(res => {
+          resetForm({})
+          setShow(true)
+          return res.data
+        })
+        .catch(error => {
+          dispatch(authFail(error))
+        })
+    setSubmitting(false)
+  }
+  let errorMessage = null
+  const error = useSelector(state => state.auth.error)
+  if (error) {
+    errorMessage = (
+        <div style={{marginBottom: '20px', textAlign: 'center'}}>
+          <p style={{color: 'red'}}>{error.message}</p>
+        </div>
+    );
+  }
   return (
-      <Box marginTop={7} marginBottom={4}>
+      <Box marginTop={5} marginBottom={4}>
+        {show ?
+            <div className={classes.root}>
+              <Alert onClose={() => setShow(false)}>
+                <strong>Congrats!</strong> You have successfully registered</Alert>
+            </div>
+            : null}
+        <h1 style={{textAlign: 'center', color: 'white', marginBottom: '10px'}}>Registration form</h1>
+        {errorMessage}
         <Container maxWidth="md">
           <Card>
             <CardContent>
-              <Typography variant="h4">New User</Typography>
-
               <Formik
                   validateOnChange={true}
                   validationSchema={
@@ -60,7 +96,7 @@ function UserForm (props) {
                   initialValues={initialValues} onSubmit={submit}>
                 {({ values, errors, isSubmitting, isValidating }) => (
                     <Form autoComplete='off'>
-                      <Box marginBottom={2}>
+                      <Box marginBottom={2} marginTop={2}>
                         <FormGroup>
                           <MyTextField placeholder='Surname' name="surname" type='input' label="Surname" />
                         </FormGroup>

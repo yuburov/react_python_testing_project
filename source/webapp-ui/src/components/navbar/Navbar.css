@@ -1,6 +1,6 @@
 nav {
     background: rgba(0, 0, 0, 0.9);
-    padding: 20px;
+    padding: 21px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +23,6 @@ nav {
     list-style-type: none;
     display: flex;
     align-items: center;
-    margin-top: 7px;
 }
 
 .menu-list li:last-child a {

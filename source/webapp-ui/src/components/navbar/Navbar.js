@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../../redux/actions/auth";
 
 const Navbar = () => {
-  
+
   const isAuthenticated = useSelector((state => state.auth.token !== null))
   const dispatch = useDispatch()
   const quit = () => {

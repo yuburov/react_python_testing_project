@@ -10,7 +10,9 @@ import Paper from '@material-ui/core/Paper';
 import {Box} from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import * as axios from "axios";
-
+import {useSelector} from "react-redux";
+import { useHistory } from "react-router-dom";
+import Spinner from "./Spinner";
 
 const useStyles = makeStyles({
   table: {
@@ -20,8 +22,12 @@ const useStyles = makeStyles({
 
 function Admin(props) {
   const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(false)
+  const isAuthenticated = useSelector((state => state.auth.token !== null))
+  const history = useHistory()
 
   useEffect(() => {
+    setLoading(true)
     axios.get(`http://127.0.0.1:8000/api/`, {
       headers: {
         "Content-Type": "application/json",
@@ -30,15 +36,20 @@ function Admin(props) {
     })
     .then(res => {
           setUsers(res.data)
+          setLoading(false)
         })
   },[])
 
   const classes = useStyles();
-
+  if (!isAuthenticated) {
+    history.push('/login')
+  } else if (loading) {
+    return <Spinner />
+  }
   return (
-      <Box marginTop={5}>
+      <Box marginTop={5} marginBottom={4}>
         <Container maxWidth="md">
-          <h2 style={{textAlign: 'center'}}>List of users</h2>
+          <h1 style={{textAlign: 'center', color: 'white',  marginBottom: '10px'}}>List of users</h1>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
