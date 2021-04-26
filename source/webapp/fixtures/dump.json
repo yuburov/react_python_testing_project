@@ -1,0 +1,176 @@
+[
+{
+  "model": "webapp.user",
+  "pk": 1,
+  "fields": {
+    "surname": "Fati",
+    "name": "Ansu",
+    "lastName": "Mane",
+    "phone": "+12125552368",
+    "address": "Chui street, 123",
+    "inn": "32435456678"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 2,
+  "fields": {
+    "surname": "Paul",
+    "name": "Pogba",
+    "lastName": "Safid",
+    "phone": "+996557456545",
+    "address": "Chui street 456",
+    "inn": "4565789565464"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 3,
+  "fields": {
+    "surname": "German",
+    "name": "Garik",
+    "lastName": "Sarovich",
+    "phone": "+996556346678",
+    "address": "Gorkiy street",
+    "inn": "34223423r"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 4,
+  "fields": {
+    "surname": "Darov",
+    "name": "Sanjar",
+    "lastName": "Mederovich",
+    "phone": "+996557892314",
+    "address": "Gorkiy street",
+    "inn": "3242349648080"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 5,
+  "fields": {
+    "surname": "Erov",
+    "name": "Mika",
+    "lastName": "Berikovich",
+    "phone": "+996557876576",
+    "address": "Gorkiy street",
+    "inn": "wew43445"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 6,
+  "fields": {
+    "surname": "Marvin",
+    "name": "Sigur",
+    "lastName": "Davidovich",
+    "phone": "+996503568935",
+    "address": "Chui street 34",
+    "inn": "234324"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 7,
+  "fields": {
+    "surname": "Edegor",
+    "name": "Martin",
+    "lastName": "Fati",
+    "phone": "+996558098798",
+    "address": "Chui street",
+    "inn": "df45545"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 8,
+  "fields": {
+    "surname": "Farov",
+    "name": "Mitya",
+    "lastName": "Borispvich",
+    "phone": "+996708887654",
+    "address": "Chui street 34",
+    "inn": "343446"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 9,
+  "fields": {
+    "surname": "Shilov",
+    "name": "Dima",
+    "lastName": "Robertovich",
+    "phone": "+996709996644",
+    "address": "Chui street 78",
+    "inn": "343246"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 10,
+  "fields": {
+    "surname": "Frolov",
+    "name": "Denis",
+    "lastName": "Albertovich",
+    "phone": "+996554345765",
+    "address": "alamedin 1, 56",
+    "inn": "34234235"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 11,
+  "fields": {
+    "surname": "Zamov",
+    "name": "Zurab",
+    "lastName": "Zafarovich",
+    "phone": "+996770456987",
+    "address": "Chui street, 235",
+    "inn": "343456g"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 12,
+  "fields": {
+    "surname": "Glushakov",
+    "name": "Denis",
+    "lastName": "Maratovich",
+    "phone": "+996555778899",
+    "address": "Gorkiy street, 46",
+    "inn": "e5wf45"
+  }
+},
+{
+  "model": "webapp.user",
+  "pk": 13,
+  "fields": {
+    "surname": "Stilenov",
+    "name": "Marat",
+    "lastName": "Azamatovich",
+    "phone": "+996558345675",
+    "address": "Gorkiy street 126",
+    "inn": "324234"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$OU8uHqRJgsqXi5WhTaM6WX$jGS+XIB2hZDHCAAWoZtzRoxAOpMbmHqY6sqxbQ2Y8Ps=",
+    "last_login": "2021-04-26T11:01:16.282Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-04-21T10:26:42.100Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

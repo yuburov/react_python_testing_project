@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Box, Button, Card, CardContent, FormGroup, TextField, Typography } from '@material-ui/core';
 import {Form, Formik, useField} from 'formik';
-import { number, object, string } from 'yup';
+import {object, string } from 'yup';
 import Container from "@material-ui/core/Container";
 import * as axios from "axios";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -47,6 +47,10 @@ function UserForm (props) {
   const [show, setShow] = useState(false)
   const dispatch = useDispatch()
   const classes = useStyles();
+  const phoneRegExp = RegExp(
+      /^\+?1?[6-9]\d{11,13}$/
+
+  );
   const submit = ({surname, name, lastName, phone, address, inn}, { setSubmitting, resetForm }) => {
     axios.post(`http://127.0.0.1:8000/api/user/create/`, {surname, name, lastName, phone, address, inn})
         .then(res => {
@@ -88,7 +92,7 @@ function UserForm (props) {
                       surname: string().required(),
                       name: string().required(),
                       lastName: string().required(),
-                      phone: number().required(),
+                      phone: string().required().matches(phoneRegExp, 'Phone number is not valid'),
                       address: string().required(),
                       inn: string().required(),
                     })
@@ -117,7 +121,7 @@ function UserForm (props) {
 
                       <Box marginBottom={2}>
                         <FormGroup>
-                          <MyTextField placeholder='Phone' name="phone" type='input' label="Phone" />
+                          <MyTextField placeholder='Phone (example: +996555224422)' name="phone" type='input' label="Phone" />
                         </FormGroup>
                       </Box>
 

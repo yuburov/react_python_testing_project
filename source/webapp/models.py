@@ -1,5 +1,4 @@
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
 from mirage import fields
 
 
@@ -8,7 +7,7 @@ class User(models.Model):
     surname = models.CharField(max_length=100, verbose_name='Фамилия')
     name = models.CharField(max_length=100, verbose_name='Имя')
     lastName = models.CharField(max_length=100, verbose_name='Отчество')
-    phone = PhoneNumberField(max_length=50, null=True, blank=True, verbose_name='Телефон')
+    phone = models.CharField(max_length=15, null=True, blank=True, verbose_name='Телефон')
     address = models.CharField(max_length=200, verbose_name='Адрес')
     inn = fields.EncryptedCharField(max_length=50, verbose_name='ИНН') # Данные ИНН будут зашифрованы в базе
 
