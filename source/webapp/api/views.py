@@ -12,7 +12,3 @@ class UserListView(ListAPIView):
 class UserCreateView(CreateAPIView):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
-
-class UserDeleteView(DestroyAPIView):
-	queryset = User.objects.all()
-	serializer_class = UserSerializer
