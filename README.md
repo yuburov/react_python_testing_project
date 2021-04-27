@@ -12,7 +12,7 @@ $ cd sample-django-app
 Create a virtual environment to install dependencies in and activate it:
 
 ```sh
-$ virualenv -p python3.8 venv
+$ virualenv -p python3.8 env
 $ source env/bin/activate
 ```
 
